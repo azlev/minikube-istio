@@ -1,0 +1,11 @@
+curl -X POST elasticsearch.elasticsearch.svc.cluster.local:9200/_security/user/filebeat
+{
+  "password" : "filebeat",
+  "roles" : [ "admin" ],
+  "full_name" : "filebeat user",
+  "email" : "noone@example.com"
+}
+
+
+k -n elasticsearch exec -it elasticsearch-6dcc856c65-cvnwb -- bin/elasticsearch-reset-password -u elastic
+k -n elasticsearch exec -it elasticsearch-6dcc856c65-cvnwb -- bin/elasticsearch-create-enrollment-token --scope kibana

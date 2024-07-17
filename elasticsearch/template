@@ -1,0 +1,13 @@
+PUT _index_template/filebeat-namespaces
+{
+  "priority": 500,
+  "template": {
+    "settings": {
+      "number_of_replicas": 0
+    }
+  },
+  "index_patterns": [
+    "filebeat-*"
+  ],
+  "data_stream": {}
+}
