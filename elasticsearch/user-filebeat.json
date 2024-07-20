@@ -1,6 +1,6 @@
 {
   "password" : "filebeat",
-  "roles" : [ "admin" ],
+  "roles" : [ "filebeat" ],
   "full_name" : "filebeat user",
   "email" : "noone@example.com"
 }

@@ -214,9 +214,9 @@ spec:
         - name: ELASTICSEARCH_PORT
           value: "9200"
         - name: ELASTICSEARCH_USERNAME
-          value: elastic
+          value: filebeat
         - name: ELASTICSEARCH_PASSWORD
-          value: ylHtKeYwqVZGHl51BQXd
+          value: filebeat
         - name: ELASTIC_CLOUD_ID
           value:
         - name: ELASTIC_CLOUD_AUTH
