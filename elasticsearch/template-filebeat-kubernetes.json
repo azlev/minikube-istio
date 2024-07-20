@@ -1,0 +1,20 @@
+{
+  "priority": 500,
+  "template": {
+    "settings": {
+      "index": {
+        "lifecycle": {
+          "name": "filebeat-kubernetes"
+        },
+        "number_of_replicas": "0"
+      }
+    }
+  },
+  "index_patterns": [
+    "filebeat-kubernetes-*",
+    "filebeat-istio"
+  ],
+  "data_stream": { },
+  "composed_of": [],
+  "allow_auto_create": true
+}
