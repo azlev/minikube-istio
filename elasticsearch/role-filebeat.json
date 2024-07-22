@@ -1,25 +1,22 @@
 {
-  "filebeat": {
-    "cluster": [
-      "monitor",
-      "manage_ilm"
-    ],
-    "indices": [
-      {
-        "names": [
-          "filebeat-*"
-        ],
-        "privileges": [
-          "all"
-        ],
-        "allow_restricted_indices": false
-      }
-    ],
-    "applications": [],
-    "run_as": [],
-    "metadata": {},
-    "transient_metadata": {
-      "enabled": true
+  "cluster": [
+    "monitor"
+  ],
+  "indices": [
+    {
+      "names": [
+        "filebeat-*"
+      ],
+      "privileges": [
+        "all"
+      ],
+      "allow_restricted_indices": false
     }
+  ],
+  "applications": [],
+  "run_as": [],
+  "metadata": {},
+  "transient_metadata": {
+    "enabled": true
   }
 }
