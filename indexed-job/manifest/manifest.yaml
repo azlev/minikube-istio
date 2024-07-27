@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: 'indexed-job'
+spec:
+  completions: 5 # this and NJOBS must be equal
+  parallelism: 3
+  completionMode: Indexed
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: 'worker'
+        image: 'python:3'
+        command:
+        - "python"
+        - "/job/job.py"
+        - "/input/input.ndjson"
+        volumeMounts:
+        - mountPath: /input
+          name: input
+        - mountPath: /job
+          name: job
+        env:
+        - name: NJOBS
+          value: "5"
+      volumes:
+      - name: job
+        configMap:
+          name: job.py
+      - name: input
+        configMap:
+          name: input
