@@ -18,17 +18,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: List changed JSON files in the last commit
-        id: changed_json_files
-        run: |
-          # Get the list of .json files changed in the last commit
-          changed_files=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep '.json$' || true)
-          echo "Changed JSON files: $changed_files"
-
-      # Runs a set of commands using the runners shell
       - name: Fake post
-        run: |
-          for f in ${{ steps.changed_json_files.outputs.files }}; do
+        run: >
+          files=$(elasticsearch/deployment/*.json)
+          for f in $files; do
             echo "curl $f"
           done
