@@ -20,7 +20,7 @@ jobs:
 
       - name: Fake post
         run: |
-          files=$(elasticsearch/deployment/*.json)
+          files=elasticsearch/deployment/*.json
           for f in $files; do
             echo "curl $f"
           done
