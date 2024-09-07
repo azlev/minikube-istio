@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Fake post
-        run: >
+        run: |
           files=$(elasticsearch/deployment/*.json)
           for f in $files; do
             echo "curl $f"
