@@ -12,7 +12,7 @@ metadata:
   name: grafana
   namespace: grafana
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: grafana
@@ -26,6 +26,17 @@ spec:
         name: grafana
         ports:
         - containerPort: 3000
+        env:
+        - name: GF_INSTALL_PLUGINS
+          value: "grafana-oncall-app vv1.9.0, grafana-github-datasource"
+        volumeMounts:
+        - mountPath: /etc/grafana
+          name: config
+      volumes:
+      - name: config
+        configMap:
+          name: grafana
+
 ---
 apiVersion: v1
 kind: Service
