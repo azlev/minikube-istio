@@ -1,0 +1,52 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+  labels:
+    db: postgres
+spec:
+  selector:
+    matchLabels:
+      db: postgres
+  serviceName: postgres
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        db: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:16
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_PASSWORD
+          value: 12permit34me
+        - name: POSTGRES_HOST_AUTH_METHOD
+          value: scram-sha-256
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/postgresql
+          readOnly: false
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+spec:
+  selector:
+    db: postgres
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
