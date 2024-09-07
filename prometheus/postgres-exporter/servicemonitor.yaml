@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: postgres-exporter
+  labels:
+    serviceMonitorSelector: prometheus
+spec:
+  endpoints:
+    - interval: 60s
+      port: metrics
+      relabelings:
+      - sourceLabels: [__meta_kubernetes_service_name]
+        targetLabel: instance
+  jobLabel: jobLabel
+  selector:
+    matchLabels:
+      app: postgres-exporter
