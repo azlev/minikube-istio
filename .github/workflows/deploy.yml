@@ -13,10 +13,6 @@ on:
         options: 
         - dev
         - prd
-      message:
-        required: true
-      environment:
-        type: environment
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   deploy:
