@@ -6,7 +6,17 @@ name: Fake post to Elasticsearch
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+    inputs:
+      name:
+        type: choice
+        description: environment
+        options: 
+        - dev
+        - prd
+      message:
+        required: true
+      environment:
+        type: environment
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   deploy:
@@ -20,7 +30,6 @@ jobs:
 
       - name: Fake post
         run: |
-          files=elasticsearch/deployment/*.json
-          for f in $files; do
+          for f in elasticsearch/deployment/*.json; do
             echo "curl $f"
           done
