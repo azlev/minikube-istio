@@ -8,11 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       env:
-        type: choice
-        description: environment
-        options: 
-        - dev
-        - prd
+        type: environment
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   deploy:
