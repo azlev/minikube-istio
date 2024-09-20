@@ -16,7 +16,7 @@ imagePullSecrets: []
 image:
   # Grafana OnCall docker image repository
   repository: grafana/oncall
-  tag:
+  tag: v1.9.0
   pullPolicy: Always
 
 # Whether to create additional service for external connections
@@ -670,7 +670,7 @@ grafana:
 
 externalGrafana:
   # Example: https://grafana.mydomain.com
-  url: http://localhost:3000
+  url: http://grafana.grafana.svc.cluster.local:3000
 
 nameOverride: ""
 fullnameOverride: ""

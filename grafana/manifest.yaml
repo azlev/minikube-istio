@@ -22,7 +22,7 @@ spec:
         app: grafana
     spec:
       containers:
-      - image: docker.io/grafana/grafana:latest
+      - image: docker.io/grafana/grafana:11.2.0
         name: grafana
         ports:
         - containerPort: 3000
