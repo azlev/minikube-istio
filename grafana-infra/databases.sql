@@ -1,0 +1,8 @@
+CREATE ROLE grafana LOGIN PASSWORD 'oncall';
+CREATE ROLE oncall LOGIN PASSWORD 'grafana';
+
+DROP DATABASE IF EXISTS grafana;
+DROP DATABASE IF EXISTS oncall;
+
+CREATE DATABASE grafana OWNER grafana;
+CREATE DATABASE oncall OWNER oncall;
